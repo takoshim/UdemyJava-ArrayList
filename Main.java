@@ -39,7 +39,6 @@ public class Main {
                     break;
             }
         }
-
     }
 
     public static void printInstructions() {
@@ -68,10 +67,9 @@ public class Main {
     }
 
     public static void removeItem() {
-        System.out.print("Enter item number: ");
-        int itemNo = scanner.nextInt();
-        scanner.nextLine();
-        groceryList.removeGroceryItem(itemNo-1);
+        System.out.print("Enter item name: ");
+        String theItem = scanner.nextLine();
+        groceryList.removeGroceryItem(theItem);
     }
 
     public static void searchForItem() {
