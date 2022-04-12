@@ -16,26 +16,35 @@ public class GroceryList {
         groceryList.add(item);
     }
 
-    public void modifyGroceryList(int position, String newItem) {
+    public void modifyGroceryItem(String currentItem, String newItem) {
+        int position = findGroceryItem(currentItem);
+        if (position >=0) {
+            modifyGroceryList(position, newItem);
+        }
+    }
+
+    private void modifyGroceryList(int position, String newItem) {
         groceryList.set(position, newItem);
         System.out.println("Grocery item " + (position+1) + " has been modified.");
     }
 
     public void removeGroceryItem(String item) {
-        int position = groceryList.indexOf(item);
+        int position = findGroceryItem(item);
         if (position >= 0) {
-           removeGroceryItem(position);
+            removeGroceryItem(position);
         }
     }
+
     private void removeGroceryItem(int position) {
         groceryList.remove(position);
     }
 
-    public String findGroceryItem(String searchItem) {
+    public int findGroceryItem(String searchItem) {
         int position = groceryList.indexOf(searchItem);
-        if (position >=0) {
-            return groceryList.get(position);
+        if (position < 0) {
+            return -1;
         }
-        return null;
+        return position;
     }
 }
+
